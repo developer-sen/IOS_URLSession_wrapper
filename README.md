@@ -70,7 +70,7 @@ With response body
 ```swift
 API().getPath(id: 1)
     .handleResponse(.OnMainThread)
-    .execute(onSuccess: { (responce:MyCodableClass) in
+    .execute(onSuccess: { (response:MyCodableClass) in
         //handle response
     }) { (error) in
         //handle error
