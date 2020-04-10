@@ -66,7 +66,7 @@ class API {
 
 ## Usage
 
-Without response body
+With response body
 ```swift
 API().getPath(id: 1)
     .handleResponse(.OnMainThread)
@@ -76,7 +76,7 @@ API().getPath(id: 1)
         //handle error
 }
 ```
-With response body
+Without response body
 ```swift
 API().getQuery(skip: 0, take: 10)
     .handleResponse(.OnBackground)
