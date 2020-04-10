@@ -1,25 +1,15 @@
-# IOS_URLSession_wrapper
+//
+//  BestDinnerAPI.swift
+//  BestDinner
+//
+//  Created by Bourke Technlogies on 3/6/19.
+//  Copyright © 2019 Bourke Technlogies. All rights reserved.
+//
 
-A lightweight URLSession wrapper for basic network requirements.
+import Foundation
 
-## Installation
-Download and drag(or add using Xcode) below Files into **Target**
-
-1. RequestBuilder.swift
-2. RestClient.swift
-3. Change baseURL in **RequestBuilder.swift** file
-
-```
- fileprivate let baseURL : String = "http://api.com/"
-```
-
-## API file
-
-Create an API file with all endpoints. refer **DemoAPI.swift**  
-
-``` swift
 class API {
-
+    
     //GET Query parameters
     func getQuery(skip:Int,take:Int) -> Request {
         return  RequestBuilder(method: .GET, url: "api/get")
@@ -29,7 +19,7 @@ class API {
             .addQuery(name: "take", value: take)
             .build()
     }
-
+    
     //GET path parameters
     func getPath(id:Int) -> Request {
         return  RequestBuilder(method: .GET, url: "api/issue/{id}")
@@ -54,7 +44,7 @@ class API {
             .setBody(body: model)
             .build()
     }
-
+    
     //multipart file upload
     func uploadFile(withParams: [String : String]?, media: [Media]?) -> Request {
         return  RequestBuilder(method: .POST, url: "tempfiles")
@@ -62,29 +52,3 @@ class API {
             .build()
     }
 }
-```
-
-## Usage
-
-Without response body
-```swift
-API().getPath(id: 1)
-    .handleResponse(.OnMainThread)
-    .execute(onSuccess: { (responce:MyCodableClass) in
-        //handle response
-    }) { (error) in
-        //handle error
-}
-```
-With response body
-```swift
-API().getQuery(skip: 0, take: 10)
-    .handleResponse(.OnBackground)
-    .execute(onSuccess: {
-        //handle response
-    }) { (error) in
-        //handle error
-}
-```
-## License
-[MIT](https://github.com/developersen95/SenGenerator/blob/master/LICENSE)
